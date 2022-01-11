@@ -27,7 +27,7 @@ class Controller {
             // create a _todo using data sent and assigning a random id
             let newTodo = {
                 id: Math.floor(4 + Math.random() * 10),
-                    ... todo,
+                    ...todo,
             }
             resolve(newTodo);
         });
