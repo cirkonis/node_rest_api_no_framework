@@ -31,7 +31,7 @@ const server = http.createServer(async (req, res) => {
 
         // get single _todo by id
         // api/todos/:id    : GET
-        case(req.url.match(/\/api\/todos\/([0-9]+])/) && req.method === "GET"):
+        case(req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "GET"):
             try {
                 const id = req.url.split("/")[3];
                 const todo = await new Todo().getTodo(id);
@@ -57,7 +57,7 @@ const server = http.createServer(async (req, res) => {
 
         // update _todo
         // api/todos/id      : PATCH
-        case(req.url.match(/\/api\/todos\/([0-9]+])/) && req.method === "PATCH"):
+        case(req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "PATCH"):
             try {
                 let id = req.url.split("/")[3];
 
@@ -75,7 +75,7 @@ const server = http.createServer(async (req, res) => {
             break;
         // delete _todo by id
         // api/todos/:id      :    DELETE
-        case(req.url.match(/\/api\/todos\/([0-9]+])/) && req.method === "DELETE"):
+        case(req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "DELETE"):
             try {
                 let id = req.url.split("/")[3];
 
@@ -94,30 +94,6 @@ const server = http.createServer(async (req, res) => {
             res.end(JSON.stringify({message: "Route not found"}));
     }
 });
-
-
-
-
-
-
-
-
-
-//     if (req.url === "/api" && req.method === "GET") {
-//         // response headers
-//         res.writeHead(200, {"Content-Type": "application/json"});
-//         // set the response
-//         res.write("Sup, i'm an Node.js API");
-//         // end the response
-//         res.end();
-//     }
-//
-//     // if no route present
-//     else{
-//         res.writeHead(404, {"Content-Type": "application/json"});
-//         res.end(JSON.stringify({message: "Route not found"}));
-//     }
-// });
 
 // set the server to listen on the set PORT constant
 server.listen(PORT, () => {
